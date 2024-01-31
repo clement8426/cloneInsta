@@ -49,3 +49,7 @@ body {
   height: auto;
   margin-right: 0.5rem;
 }
+
+.card::-webkit-scrollbar {
+  display: none;
+}
