@@ -1,21 +1,67 @@
-<%= simple_form_for(@post) do |f| %>
-  <%= f.error_notification %>
-  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+<div class="modal fade modal-lg" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <%= simple_form_for(post) do |f| %>
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Create new post</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body d-flex">
 
-  <div class="form-inputs">
-    <%= f.input :caption %>
-    <%= f.input :longitude %>
-    <%= f.input :latitude %>
-    <%= f.input :allow_comments %>
-    <%= f.input :show_likes_count %>
+          <div class="border-end border-secondary mx-2" style="width: 60%">
+            <%= f.file_field :images, multiple: true, class: "form-control file optional" %>
+          </div>
 
-    <div>
-      <%= f.label :images, style: "display: block" %>
-      <%= f.file_field :images, multiple: true, class: "form-control file optional" %>
-    </div>
+          <div style="width: 40%">
+            <%= f.error_notification %>
+            <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+            <div class="my-2">
+              <% if current_user.profile_picture.attached? %>
+                <%= image_tag current_user.profile_picture, class: "img-thumbnail rounded-circle", style: "width: 10%" %>
+              <% else %>
+                <%= image_tag "pfp.png", class: "img-thumbnail rounded-circle", style: "width: 10%" %>
+              <% end %>
+              <span class="fw-bold mx-2"><%= current_user.username %></span>
+            </div>
+
+
+            <div class="form-inputs">
+              <%= f.text_area :caption, rows:8, placeholder: "Write a caption...", class:"form-control border-0", style: "resize: none" %>
+
+              <%= f.text_field :longitude, placeholder: "Add location", class: "form-control" %>
+
+              <div class="d-flex justify-content-between align-items-center border form-control my-2" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" style="text-decoration: none">
+                <a class="text-dark " style="text-decoration: none" >
+                  Advancved settings
+                </a>
+                <i class="fa-solid fa-angle-down"></i>
+              </div>
+
+              <div class="collapse" id="collapseExample">
+                <div class="card card-body">
+                  <div class="form-check form-switch">
+                    <%= f.check_box :allow_comments, class: "form-check-input", role: "switch" %>
+                    <%= f.label :allow_comments, style: "display: block", class: "form-check-label"%>
+                  </div>
+
+                  <div class="form-check form-switch">
+                    <%= f.check_box :show_likes_count, class: "form-check-input", role: "switch" %>
+                    <%= f.label :show_likes_count, style: "display: block", class: "form-check-label"%>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+
+        </div>
+        <div class="modal-footer">
+          <%= f.button :submit, class: "btn btn-primary" %>
+        </div>
+      </div>
+    <% end %>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
-<% end %>
+</div>

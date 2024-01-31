@@ -1,4 +1,4 @@
-<div id="<%= dom_id post %>">
+<div class="my-3" id="<%= dom_id post %>">
   <div class="card" style="width: 25rem;">
     <div class="card-header bg-white">
       <div class="d-flex justify-content-between">
@@ -52,7 +52,7 @@
           <% end %>
         </div>
       </div>
-      <p class="card-text"><span class="fw-bold"><%= post.user.username%></span> <%= post.caption %>this is a long caption </p>
+      <p class="card-text"><span class="fw-bold"><%= post.user.username%></span> <%= post.caption %></p>
 
       <small class="text-muted"><%= time_ago_in_words(post.created_at) %></small>
     </div>
