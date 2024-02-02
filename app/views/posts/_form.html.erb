@@ -9,7 +9,7 @@
         <div class="modal-body d-flex">
 
           <div class="border-end border-secondary mx-2" style="width: 60%">
-            <%= f.file_field :images, multiple: true, class: "form-control file optional" %>
+            <%= f.file_field :images, multiple: true, class: "form-control file optional", id: "post-images" %>
           </div>
 
           <div style="width: 40%">
@@ -41,12 +41,12 @@
               <div class="collapse" id="collapseExample">
                 <div class="card card-body">
                   <div class="form-check form-switch">
-                    <%= f.check_box :allow_comments, class: "form-check-input", role: "switch" %>
+                    <%= f.check_box :allow_comments, class: "form-check-input", role: "switch", checked: true %>
                     <%= f.label :allow_comments, style: "display: block", class: "form-check-label"%>
                   </div>
 
                   <div class="form-check form-switch">
-                    <%= f.check_box :show_likes_count, class: "form-check-input", role: "switch" %>
+                    <%= f.check_box :show_likes_count, class: "form-check-input", role: "switch", checked: true %>
                     <%= f.label :show_likes_count, style: "display: block", class: "form-check-label"%>
                   </div>
                 </div>
