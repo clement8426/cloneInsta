@@ -1,0 +1,16 @@
+<div class="container d-flex flex-column">
+  <div class="d-flex justify-content-center align-items-center">
+    <div class="w-content border-top border-dark">
+      <i class="fa-solid fa-table-cells"></i>
+      <small>Post</small>
+    </div>
+  </div>
+  <div class=" row justify-content-center align-items-center">
+    <% user.posts.each do |post| %>
+      <div class="col-lg-4 col-mb-6 col-sm-8 p-3 mb-5" style="height:20rem">
+        <%= image_tag post.images.first, class:"img-thumbnail", style: "width:100%; height:20rem; object-fit:cover" %>
+
+      </div>
+    <% end %>
+  </div>
+</div>
