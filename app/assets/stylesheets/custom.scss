@@ -65,3 +65,33 @@ body {
 .color-red {
   color: red;
 }
+
+.profile-post img {
+  transition: opacity 0.1s;
+}
+.profile-post-likes {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  visibility: hidden;
+  text-shadow: 1px 1px 10px #000000a6;
+  transition: visibility 0.1s;
+}
+
+.profile-post:hover img {
+  opacity: 0.5;
+}
+
+.profile-post:hover .profile-post-likes {
+  visibility: visible;
+}
+
+.multiple-images {
+  position: absolute;
+  top: 15%;
+  right: 7%;
+  transform: translate(-50%, -50%);
+  text-shadow: 1px 1px 10px #000000a6;
+  transition: visibility 0.1s;
+}
