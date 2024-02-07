@@ -30,12 +30,18 @@
         <div class="dropdown">
           <a class="" type="button" data-bs-toggle="dropdown" aria-expanded="false">
             <% if current_user && current_user.profile_picture.attached? %>
-              <%= image_tag current_user.profile_picture, class: "img-thumbnail rounded-circle", style: "width: 2rem" %>
+              <%= image_tag current_user.profile_picture, class: "img-thumbnail rounded-circle", style: "width: 2rem; height: 2rem;" %>
             <% else %>
               <%= image_tag "pfp.png", class: "img-thumbnail rounded-circle", style: "width: 2rem" %>
             <% end %>
           </a>
           <ul class="dropdown-menu">
+            <li>
+              <%= link_to "Profile", user_path(current_user), class: "dropdown-item" %>
+            </li>
+            <li>
+              <%= link_to "Settings", edit_user_registration_path, class: "dropdown-item" %>
+            </li>
             <li>
               <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
             </li>
