@@ -118,3 +118,8 @@ body {
   text-decoration: none;
   color: black;
 }
+.dropstart .dropdown-menu[data-bs-popper] {
+  top: 2.5rem;
+  width: 25rem;
+  right: -11rem;
+}
