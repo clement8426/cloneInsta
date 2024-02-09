@@ -1,6 +1,6 @@
 class Post < ApplicationRecord
   belongs_to :user
-  has_many_attached :images
+  has_many_attached :images,service: :amazon
 
   validates :images, presence: true, blob: { content_type: :web_image }
   has_many :likes, dependent: :destroy
