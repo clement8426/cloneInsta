@@ -5,6 +5,22 @@ class UsersController < ApplicationController
 
   end
 
+  def index
+    if params[:search_query].present?
+      @users = User.where("username LIKE ?", "%#{params[:search_query]}%")
+    else
+      @users = []
+    end
+
+    if turbo_frame_request?
+      render partial: "shared/search_results", locals: {users: @users}
+    end
+  end
+
+  def method_name
+
+  end
+
   def new
     @user = User.new
   end
