@@ -7,7 +7,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="d-flex">
+    <div class="d-flex ">
       <div class="collapse navbar-collapse me-5" id="navbarSupportedContent" data-controller="key-target">
         <%= form_with(url: users_path, method: :get, data: {turbo_frame: "search_results", controller: "key-target"}, class:"d-flex") do |f| %>
           <div class="dropdown">

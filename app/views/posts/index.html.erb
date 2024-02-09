@@ -1,14 +1,5 @@
-<p style="color: green"><%= notice %></p>
+<div class="container d-flex flex-column">
 
-<h1>Posts</h1>
+  <%= render 'posts/post_index', posts: @posts %>
 
-<div id="posts">
-  <% @posts.each do |post| %>
-    <%= render post %>
-    <p>
-      <%= link_to "Show this post", post %>
-    </p>
-  <% end %>
 </div>
-
-<%= link_to "New post", new_post_path %>
