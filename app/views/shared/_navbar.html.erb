@@ -8,11 +8,12 @@
     </button>
 
     <div class="d-flex">
-      <div class="collapse navbar-collapse me-5" id="navbarSupportedContent">
-        <%= form_with(url: users_path, method: :get, data: {turbo_frame: "search_results", controller: "search-results"}, class:"d-flex") do |f| %>
+      <div class="collapse navbar-collapse me-5" id="navbarSupportedContent" data-controller="key-target">
+        <%= form_with(url: users_path, method: :get, data: {turbo_frame: "search_results", controller: "key-target"}, class:"d-flex") do |f| %>
           <div class="dropdown">
             <%= f.text_field :search_query, id: "search_query", class: "form-control me-2 border-0", type:"search", placeholder:"Search",
-                "aria-label"=>"Search", style: "background: #efefef", "data-bs-toggle"=>"dropdown", "aria-expanded"=>"false" %>
+                "aria-label"=>"Search", style: "background: #efefef", "data-bs-toggle"=>"dropdown", "aria-expanded"=>"false",
+                data: { action: "input->key-target#search" } %>
 
             <ul class="dropdown-menu p-4 mt-2" style="width:25rem">
               <%= render 'shared/search_results', users: [] %>
@@ -30,7 +31,10 @@
         <a type="button" class="text-dark" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
           <i class="fa-regular fa-square-plus fa-xl"></i>
         </a>
-        <i class="fa-regular fa-compass fa-xl"></i>
+
+        <%= link_to posts_path, class: "text-dark" do %>
+          <i class="fa-regular fa-compass fa-xl"></i>
+        <% end %>
 
         <div class="dropstart">
           <i class="fa-regular fa-heart fa-xl" data-bs-toggle="dropdown" aria-expanded="false"></i>
